@@ -1,4 +1,5 @@
 import React from 'react';
+import ListPage from 'components/ListPage';
 
 class ListContainer extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class ListContainer extends React.Component {
     render() {
         return (
             <div>
-                111
+                <ListPage/>
             </div>
         );
     }

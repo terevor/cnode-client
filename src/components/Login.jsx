@@ -15,10 +15,6 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.accesstoken = '';
-        this.state = {
-            errorText: '',
-            btnEnable: false
-        };
     }
 
     closeLogin = () => this.props.dispatch(loginAction.closeLogin());
@@ -70,13 +66,11 @@ class Login extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        openLogin: state.login.openLogin,
-        errorText: state.login.errorText,
-        showSnackbar: state.snackbar.show,
-        message: state.snackbar.message
-    };
-}
+const mapStateToProps = (state) => ({
+    openLogin: state.login.openLogin,
+    errorText: state.login.errorText,
+    showSnackbar: state.snackbar.show,
+    message: state.snackbar.message
+});
 
 export default connect(mapStateToProps)(Login);

@@ -5,6 +5,7 @@ import * as message from '../constants/message';
 import * as http from '../utils/http';
 import * as progress from './progress.action';
 import * as snackbar from './snackbar.action';
+import * as pagination from './pagination.action';
 
 const DEFAULT_PARAMS = { tab: 'all', page: 1 };
 
@@ -15,13 +16,12 @@ const fetchTopicSuccess = (data) => ({
     }
 });
 
-export const fetchTopicList = (params) => {
+export const fetchTopicList = (params = {}) => {
     
     return (dispatch) => {
         dispatch(progress.showProgress());
 
         let p = { ...DEFAULT_PARAMS, ...params };
-        //dispatch(paginationAction.changePage(p.page));
 
         return http.get(`https://cnodejs.org/api/v1/topics?mdrender=true&tab=${p.tab}&page=${p.page}`)
             .then((response) => {
@@ -33,11 +33,12 @@ export const fetchTopicList = (params) => {
                 }
                 return response.json();
             })
-            .then((data) => {
-                if (data) {
+            .then((json) => {
+                if (json) {
                     dispatch(snackbar.showSnackBar(message.INFO_FETCHTOPICSUCCESS));
+                    dispatch(pagination.changePage(p.page));
 
-                    return dispatch(fetchTopicSuccess(data));
+                    return dispatch(fetchTopicSuccess(json.data));
                 } else {
                     return null;
                 }
