@@ -11,6 +11,8 @@ const mapStateToProps = (state) => ({
     currPage: state.pagination.currPage
 });
 
+const currPageIcon = (<ArrowBack color={pinkA200} />);
+
 export class Pagination extends Component {
     getStyles() {
         return {
@@ -37,7 +39,7 @@ export class Pagination extends Component {
 
         for(let i = beginIndex; i <= endIndex; i++) {
             if(i === currPage) {
-                pageMenus.push(<MenuItem primaryText={i} rightIcon={<ArrowBack style={{color: pinkA200}} />} onTouchTap={this.changePage.bind(this, i)} key={menuKey++} style={{ color: pinkA200 }} />);
+                pageMenus.push(<MenuItem primaryText={i} rightIcon={currPageIcon} onTouchTap={this.changePage.bind(this, i)} key={menuKey++} style={{ color: pinkA200 }} />);
             } else {
                 pageMenus.push(<MenuItem primaryText={i} onTouchTap={this.changePage.bind(this, i)} key={menuKey++} />);
             }
