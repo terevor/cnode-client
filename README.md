@@ -1,7 +1,7 @@
 # React 示例项目 · cnodejs.org论坛客户端
 
 > ###写在前面  
-> 基于Yeoman react webpack generators 构建 [yeoman-generator]  
+> 基于[Yeoman React Webpack Generators][yeoman-generator] 构建
 
 ## 目录
 #### &sect; [技术栈](#features)
@@ -85,14 +85,9 @@
 ├── package.json     # （不多解释）
 ```
 
-
-
-## <a name="reference">&sect; 参考</a>
-* [Material UI](http://www.material-ui.com/)
-* [探讨 React 项目目录结构](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)
-
 [yeoman-generator]: https://github.com/react-webpack-generators/generator-react-webpack
 [learning-es6]: http://es6.ruanyifeng.com/
+[Material UI]: http://www.material-ui.com/
 [react-doc]: http://reactjs.cn/react/docs/getting-started-zh-CN.html
 [redux-doc]: http://camsong.github.io/redux-in-chinese/index.html
 [simple-tutorial]: https://github.com/kenberkeley/redux-simple-tutorial
