@@ -36,8 +36,10 @@
 * [React 文档][react-doc]
 * [Redux 文档][redux-doc]（看完后懵逼的请转看 [Redux 简明教程][simple-tutorial]）
 * [React Router 文档][react-router-doc]
+* [Google Material Design UI库][Material UI]
 
 同时您还需要熟悉 ES6
+* [ES6 入门教程][learning-es6]
 
 ### <a name="installation">⊙ 安装</a>
 > 建议升级到 node 6.x + npm 3.x 环境
@@ -90,6 +92,7 @@
 * [探讨 React 项目目录结构](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)
 
 [yeoman-generator]: https://github.com/react-webpack-generators/generator-react-webpack
+[learning-es6]: http://es6.ruanyifeng.com/
 [react-doc]: http://reactjs.cn/react/docs/getting-started-zh-CN.html
 [redux-doc]: http://camsong.github.io/redux-in-chinese/index.html
 [simple-tutorial]: https://github.com/kenberkeley/redux-simple-tutorial
