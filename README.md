@@ -12,8 +12,6 @@
 #### &sect; [项目架构](#architecture)
   * [目录结构](#tree)
 
-#### &sect; [参考](#reference)
-
 ****
 
 ## <a name="features">&sect; 技术栈</a>
@@ -67,7 +65,7 @@
 ├─ dist/             # build 生成的生产环境下的项目
 ├─ src/              # 源码目录（开发都在这里进行）
 │   ├─ components/     # 组件（COMPONENT）
-│   ├─ containers/     # 容器（stateless COMPONENT）
+│   ├─ containers/     # 容器（Dump COMPONENT）
 │   ├─ actions/        # （Redux ACTION）
 │   ├─ reducers/       # （Redux REDUCER）
 │   ├─ store/          # （Redux STORE）
@@ -78,7 +76,7 @@
 │   ├─ styles/         # 样式
 │   ├─ index.js        # 启动文件
 │   ├─ index.html      # 静态主页
-├── test/           # 放置无需经由 Webpack 处理的静态文件
+├── test/           # 测试相关
 ├── .babelrc         # Babel 转码配置
 ├── .eslintrc        # ESLint 配置
 ├── .gitignore       # （配置）需被 Git 忽略的文件（夹）
