@@ -64,8 +64,8 @@
 ├─ cfg/              # Webpack 配置目录
 ├─ dist/             # build 生成的生产环境下的项目
 ├─ src/              # 源码目录（开发都在这里进行）
-│   ├─ components/     # 组件（COMPONENT）
-│   ├─ containers/     # 容器（Dump COMPONENT）
+│   ├─ components/     # 组件（Dumb COMPONENT）
+│   ├─ containers/     # 容器（Smart COMPONENT）
 │   ├─ actions/        # （Redux ACTION）
 │   ├─ reducers/       # （Redux REDUCER）
 │   ├─ store/          # （Redux STORE）
