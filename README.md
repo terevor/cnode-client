@@ -70,7 +70,7 @@
 │   ├─ reducers/       # （Redux REDUCER）
 │   ├─ store/          # （Redux STORE）
 │   ├─ routes/         # 路由（ROUTE）
-│   ├─ constants/      # 常量（SERVICE）
+│   ├─ constants/      # 常量
 │   ├─ utils/          # 工具库（UTIL）
 │   ├─ images/         # 图片
 │   ├─ styles/         # 样式
