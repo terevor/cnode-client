@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { fetchTopicList } from 'actions/topic.action';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import { pinkA200 } from 'material-ui/styles/colors';
+/*import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => ({
-    currPage: state.pagination.currPage
-});
+@connect(
+    ({ pagination }) => ({ currPage: pagination.currPage }),
+    require('ACTION/topic.action').default
+)*/
 
 const currPageIcon = (<ArrowBack color={pinkA200} />);
 
-export class Pagination extends Component {
+export default class Pagination extends Component {
     getStyles() {
         return {
             page: {
@@ -55,11 +55,11 @@ export class Pagination extends Component {
     }
 
     changePage(pageNo) {
-        this.props.dispatch(fetchTopicList({ page: pageNo }));
+        this.props.fetchTopicList({ page: pageNo });
     }
 
     render() {
-        const { currPage } = this.props;
+        const { currPage } = this.props;console.log('Pagination render');
         const styles = this.getStyles();
         const totalPage = 410;
         const menus = this.getPageMenus(currPage, totalPage);
@@ -76,7 +76,3 @@ export class Pagination extends Component {
         );
     }
 }
-
-export default connect(
-    mapStateToProps
-)(Pagination);

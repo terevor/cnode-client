@@ -1,60 +1,65 @@
-import {
-    OPENLOGIN,
-    CLOSELOGIN,
-    LOGININPUTERROR,
-    ACCESSSUCCESS,
-    LOGOUT
-} from '../constants';
 import * as message from '../constants/message';
-import * as progress from './progress.action';
-import * as snackbar from './snackbar.action';
-import * as http from '../utils/http';
+import progress from './progress.action';
+import snackbar from './snackbar.action';
+import * as http from 'UTIL/http';
 
+// ================================
+// Action Type
+// ================================
+const OPENLOGIN = 'OPENLOGIN';
+const CLOSELOGIN = 'CLOSELOGIN';
+const LOGININPUTERROR = 'LOGININPUTERROR';
+const VALIDATESUCCESS = 'VALIDATESUCCESS';
+const LOGOUT = 'LOGOUT';
+
+// ================================
+// Action Creator
+// ================================
 /**
- * 打开登录dialog
+ * 打开登录框
  * @return {[type]} [description]
  */
-export const openLogin = () => ({
+const openLogin = () => ({
     type: OPENLOGIN
-});
+})
 /**
- * 关闭登录dialog
+ * 关闭登录框
  * @return {[type]} [description]
  */
-export const closeLogin = () => ({
+const closeLogin = () => ({
     type: CLOSELOGIN
-});
+})
 /**
- * 登录input输入值异常
+ * 登录input输入异常提示
  * @param  {[type]} errorText [description]
  * @return {[type]} [description]
  */
-export const loginInputError = (errorText = '') => ({
+const loginInputError = (errorText = '') => ({
     type: LOGININPUTERROR,
     payload: {
         errorText: errorText
     }
-});
+})
 /**
  * 验证成功
  * @param  {[type]} data [description]
  * @return {[type]}      [description]
  */
-export const getAccessSuccess = (data) => ({
-    type: ACCESSSUCCESS,
+const validateSuccess = (data) => ({
+    type: VALIDATESUCCESS,
     payload: {
         user: data
     }
-});
+})
 /**
- * 退出
+ * 注销
  * @return {[type]} [description]
  */
-export const logout = () => ({
+const logout = () => ({
     type: LOGOUT
-});
+})
 
-export const validateAccessToken = (token) => {
+const validateAccessToken = (token) => {
     return (dispatch) => {
         dispatch(progress.showProgress());
 
@@ -77,10 +82,49 @@ export const validateAccessToken = (token) => {
 
                 const user = { ...data, accesstoken: token };
                 
-                return dispatch(getAccessSuccess(user));
+                return dispatch(validateSuccess(user));
             } else {
                 return null;
             }
         });
     };
-};
+}
+
+/* default 导出所有 Action Creators */
+export default {
+    openLogin,
+    closeLogin,
+    loginInputError,
+    validateSuccess,
+    logout,
+    validateAccessToken
+}
+
+// ================================
+// Action handlers for Reducer
+// ================================
+export const ACTION_HANDLERS = {
+    [OPENLOGIN]: (state) => ({
+        ...state,
+        showLogin: true,
+        errorText: null
+    }),
+    [CLOSELOGIN]: (state) => ({
+        ...state,
+        showLogin: false
+    }),
+    [LOGININPUTERROR]: (state, { payload }) => ({
+        ...state,
+        errorText: payload.errorText
+    }),
+    [VALIDATESUCCESS]: (state, { payload }) =>( {
+        ...state,
+        user: payload.user,
+        isLogedin: true
+    }),
+    [LOGOUT]: (state) => ({
+        ...state,
+        user: {},
+        isLogedin: false
+    })
+}

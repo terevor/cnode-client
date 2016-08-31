@@ -1,22 +1,5 @@
-import {
-	FETCHTOPICSUCCESS
-} from '../constants';
+import createReducer from 'UTIL/createReducer';
+import { ACTION_HANDLERS } from 'ACTION/topic.action';
+import initState from 'STORE/initState';
 
-const defaultState = {
-    
-};
-
-const reducer = (state = defaultState, { type, payload }) => {
-    switch (type) {
-        case FETCHTOPICSUCCESS:
-            return {
-                ...state,
-                topics: payload.topics
-            };
-
-        default:
-            return state;
-    }
-};
-
-export default reducer;
+export default createReducer(initState.topic, ACTION_HANDLERS);

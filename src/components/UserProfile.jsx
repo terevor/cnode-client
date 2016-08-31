@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as profileAction from 'actions/profile.action';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -8,7 +7,8 @@ import Avatar from 'material-ui/Avatar';
 import SvgIconPerson from 'material-ui/svg-icons/social/person';
 import SvgIconFace from 'material-ui/svg-icons/action/face';
 import SvgIconExit from 'material-ui/svg-icons/action/exit-to-app';
-import { logout } from 'actions/login.action';
+import * as profileAction from 'ACTION/profile.action';
+import { logout } from 'ACTION/login.action';
 import { go } from 'react-router-redux';
 import { Link } from 'react-router';
 

@@ -1,20 +1,5 @@
-import { PAGECHANGE } from '../constants';
+import createReducer from 'UTIL/createReducer';
+import { ACTION_HANDLERS } from 'ACTION/pagination.action';
+import initState from 'STORE/initState';
 
-const defaultState = {
-    currPage: 1
-};
-
-const reducer = (state = defaultState, { type, payload }) => {
-    switch (type) {
-        case PAGECHANGE:
-            return {
-                ...state,
-                currPage: payload.currPage
-            };
-
-        default:
-            return state;
-    }
-};
-
-export default reducer;
+export default createReducer(initState.pagination, ACTION_HANDLERS);

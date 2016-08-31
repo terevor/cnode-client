@@ -1,14 +1,19 @@
-import {
-    FETCHTOPICSUCCESS
-} from '../constants';
 import * as message from '../constants/message';
-import * as http from '../utils/http';
-import * as progress from './progress.action';
-import * as snackbar from './snackbar.action';
-import * as pagination from './pagination.action';
+import * as http from 'UTIL/http';
+import progress from './progress.action';
+import snackbar from './snackbar.action';
+import pagination from './pagination.action';
+
+// ================================
+// Action Type
+// ================================
+const FETCHTOPICSUCCESS = 'FETCHTOPICSUCCESS';
 
 const DEFAULT_PARAMS = { tab: 'all', page: 1 };
 
+// ================================
+// Action Creator
+// ================================
 const fetchTopicSuccess = (data) => ({
     type: FETCHTOPICSUCCESS,
     payload: {
@@ -16,7 +21,7 @@ const fetchTopicSuccess = (data) => ({
     }
 });
 
-export const fetchTopicList = (params = {}) => {
+const fetchTopicList = (params = {}) => {
     
     return (dispatch) => {
         dispatch(progress.showProgress());
@@ -45,3 +50,18 @@ export const fetchTopicList = (params = {}) => {
             });
     };
 };
+
+/* default 导出所有 Action Creators */
+export default {
+    fetchTopicList
+}
+
+// ================================
+// Action handlers for Reducer
+// ================================
+export const ACTION_HANDLERS = {
+    [FETCHTOPICSUCCESS]: (state, { payload }) => ({
+        ...state,
+        topics: payload.topics
+    })
+}

@@ -13,6 +13,9 @@ injectTapEventPlugin();
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
+/*const { whyDidYouUpdate } = require('why-did-you-update');
+whyDidYouUpdate(React);*/
+
 render(
     <Provider store={store}>
         <Router history={history}>

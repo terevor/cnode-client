@@ -30,13 +30,14 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      actions: `${defaultSettings.srcPath}/actions/`,
-      components: `${defaultSettings.srcPath}/components/`,
-      containers: `${defaultSettings.srcPath}/containers/`,
-      reducers: `${defaultSettings.srcPath}/reducers/`,
-      store: `${defaultSettings.srcPath}/store/`,
-      styles: `${defaultSettings.srcPath}/styles/`,
-      config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV
+      ACTION: `${defaultSettings.srcPath}/actions/`,
+      COMPONENT: `${defaultSettings.srcPath}/components/`,
+      CONTAINER: `${defaultSettings.srcPath}/containers/`,
+      REDUCER: `${defaultSettings.srcPath}/reducers/`,
+      STORE: `${defaultSettings.srcPath}/store/`,
+      STYLE: `${defaultSettings.srcPath}/styles/`,
+      UTIL: `${defaultSettings.srcPath}/utils/`,
+      CONFIG: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV
     }
   },
   postcss: function () {

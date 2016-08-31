@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 import TopicItem from './TopicItem';
 
-const mapStateToProps = (state) => ({
-    topics: state.topic.topics,
-    token: state.login.user.accesstoken
-});
+/*@connect(
+  ({ topic }) => ({ topics: topic.topics })
+)*/
 
-export class TopicList extends Component {
+export default class TopicList extends Component {
     getStyles() {
         const styles = {
             wrapper: {
@@ -18,10 +17,11 @@ export class TopicList extends Component {
         };
         return styles;
     }
-    render() {
-        const { topics } = this.props;
 
-        const cc = topics && topics.length > 0 ? (
+    render() {
+        const { topics } = this.props;console.log('TopicList render');
+
+        const items = topics && topics.length > 0 ? (
                 topics.map((topic, key) => {
                     return <TopicItem topic={topic} key={key} />;
                 })
@@ -29,12 +29,8 @@ export class TopicList extends Component {
 
         return (
             <div style={this.getStyles().wrapper}>
-                {cc}
+                {items}
             </div>
         );
     }
 }
-
-export default connect(
-    mapStateToProps
-)(TopicList);

@@ -1,13 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
-import Snackbar from 'material-ui/Snackbar';
-import * as loginAction from '../actions/login.action';
-import * as snackbarAction from '../actions/snackbar.action';
+import { connect } from 'react-redux';
 
-class Login extends React.Component {
+@connect(
+    ({ login }) => ({ showLogin: login.showLogin, errorText: login.errorText }),
+    require('ACTION/login.action').default
+)
+
+export default class Login extends React.Component {
     static propTypes = {
         
     };
@@ -17,15 +19,13 @@ class Login extends React.Component {
         this.accesstoken = '';
     }
 
-    closeLogin = () => this.props.dispatch(loginAction.closeLogin());
-
     handleInputChange = (event) => {
         this.accesstoken = event.target.value.replace(/(^\s*)|(\s*$)/g, '');
         if (this.accesstoken === '') {
-            this.props.dispatch(loginAction.loginInputError('不能为空'));
+            this.props.loginInputError('不能为空');
         } else {
             if(this.props.errorText !== '') {
-                this.props.dispatch(loginAction.loginInputError());
+                this.props.loginInputError();
             }
         }
         
@@ -33,20 +33,18 @@ class Login extends React.Component {
 
     validateAccessToken = () => {
         if (this.accesstoken === '') return;
-        this.props.dispatch(loginAction.validateAccessToken(this.accesstoken));
+        this.props.validateAccessToken(this.accesstoken);
     };
 
-    handleSnackbarClose = () => this.props.dispatch(snackbarAction.hideSnackBar());
-
     render() {
-        const { openLogin, errorText, showSnackbar, message } = this.props;
+        const { showLogin, errorText, closeLogin } = this.props;console.log('Login render');
         return (
             <div style={{width: '300px'}}>
                 <Dialog
                     title="登录验证"
                     modal={false}
-                    open={openLogin}
-                    onRequestClose={this.closeLogin}>
+                    open={showLogin}
+                    onRequestClose={closeLogin}>
                     <div style={{width: '520px', marginLeft: 'auto'}}>
                         <TextField
                             hintText="请输入cnodejs.org的AccessToken"
@@ -56,21 +54,7 @@ class Login extends React.Component {
                         <RaisedButton label="验证" secondary={true} disabled={errorText !== ''} onTouchTap={this.validateAccessToken} style={{marginLeft: '15px'}}/>
                     </div>
                 </Dialog>
-                <Snackbar
-                    open={showSnackbar}
-                    message={message}
-                    autoHideDuration={4000}
-                    onRequestClose={this.handleSnackbarClose}/>
             </div>
         );
     }
 }
-
-const mapStateToProps = (state) => ({
-    openLogin: state.login.openLogin,
-    errorText: state.login.errorText,
-    showSnackbar: state.snackbar.show,
-    message: state.snackbar.message
-});
-
-export default connect(mapStateToProps)(Login);

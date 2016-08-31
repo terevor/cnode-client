@@ -1,26 +1,5 @@
-import {
-    SHOWPROGRESS, HIDEPROGRESS
-} from '../constants';
+import createReducer from 'UTIL/createReducer';
+import { ACTION_HANDLERS } from 'ACTION/progress.action';
+import initState from 'STORE/initState';
 
-const defaultState = {
-    show: false
-};
-
-const reducer = (state = defaultState, { type }) => {
-    switch (type) {
-        case SHOWPROGRESS:
-            return {
-                ...state,
-                show: true
-            };
-        case HIDEPROGRESS:
-            return {
-                ...state,
-                show: false
-            };
-        default:
-            return state;
-    }
-};
-
-export default reducer;
+export default createReducer(initState.progress, ACTION_HANDLERS);

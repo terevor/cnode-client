@@ -1,16 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import { cyan500 } from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import moment from 'moment';
 import momentLocale from 'moment/locale/zh-cn';
 
-const mapStateToProps = (state) => ({
-    token: state.login.user.accesstoken
-});
-
-export class TopicItem extends Component {
+export default class TopicItem extends Component {
     tabMap(tab) {
         switch(tab) {
             case 'share':
@@ -71,7 +66,3 @@ export class TopicItem extends Component {
             </Card>);
     }
 }
-
-export default connect(
-    mapStateToProps
-)(TopicItem);

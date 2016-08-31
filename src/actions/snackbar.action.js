@@ -1,25 +1,41 @@
-import { SHOWSNACKBAR, HIDESNACKBAR } from '../constants';
+// ================================
+// Action Type
+// ================================
+const SHOWSNACKBAR = 'SHOWSNACKBAR';
+const HIDESNACKBAR = 'HIDESNACKBAR';
 
-/**
- * 开启消息
- * @param  {[type]} message [description]
- * @return {[type]}         [description]
- */
-export const showSnackBar = (message) => ({
+// ================================
+// Action Creator
+// ================================
+const showSnackBar = (message) => ({
     type: SHOWSNACKBAR,
     payload: {
         message: message
     }
 });
 
-/**
- * 关闭消息
- * @param  {[type]} message [description]
- * @return {[type]}         [description]
- */
-export const hideSnackBar = () => ({
-    type: HIDESNACKBAR,
-    payload: {
-        message: ''
-    }
+const hideSnackBar = () => ({
+    type: HIDESNACKBAR
 });
+
+/* default 导出所有 Action Creators */
+export default {
+    showSnackBar,
+    hideSnackBar
+}
+
+// ================================
+// Action handlers for Reducer
+// ================================
+export const ACTION_HANDLERS = {
+    [SHOWSNACKBAR]: (state, { payload }) => ({
+        ...state,
+        show: true,
+        message: payload.message
+    }),
+    [HIDESNACKBAR]: (state) =>( {
+        ...state,
+        show: false,
+        message: ''
+    })
+}

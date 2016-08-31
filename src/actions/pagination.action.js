@@ -1,8 +1,29 @@
-import { PAGECHANGE } from '../constants';
+// ================================
+// Action Type
+// ================================
+const PAGECHANGE = 'PAGECHANGE';
 
-export const changePage = (page) => ({
+// ================================
+// Action Creator
+// ================================
+const changePage = (page) => ({
     type: PAGECHANGE,
     payload: {
     	currPage: page
     }
 });
+
+/* default 导出所有 Action Creators */
+export default {
+    changePage
+}
+
+// ================================
+// Action handlers for Reducer
+// ================================
+export const ACTION_HANDLERS = {
+    [PAGECHANGE]: (state, { payload }) => ({
+        ...state,
+        currPage: payload.currPage
+    })
+}
