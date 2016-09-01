@@ -1,6 +1,5 @@
 # React 示例项目 · cnodejs.org论坛客户端
-
-> ###写在前面  
+  
 > 基于[Yeoman React Webpack Generators][yeoman-generator] 构建
 
 ## 目录
@@ -46,7 +45,7 @@
 
 本示例项目需要结合 [cnodejs.org论坛 RESTful API](https://cnodejs.org/api)  
 模拟前后端分离开发 
-`git clone`后，打开cmd命令窗口切换到目录下  
+`git clone`后，打开命令窗口切换到工程目录下  
 敲下 `npm install` 安装依赖，npm安装如若失败，建议使用cnpm替代
 
 ### <a name="start">⊙ 启动</a>
@@ -64,8 +63,7 @@
 ├─ cfg/              # Webpack 配置目录
 ├─ dist/             # build 生成的生产环境下的项目
 ├─ src/              # 源码目录（开发都在这里进行）
-│   ├─ components/     # 组件（Dumb COMPONENT）
-│   ├─ containers/     # 容器（Smart COMPONENT）
+│   ├─ components/     # 组件（COMPONENT）
 │   ├─ actions/        # （Redux ACTION）
 │   ├─ reducers/       # （Redux REDUCER）
 │   ├─ store/          # （Redux STORE）

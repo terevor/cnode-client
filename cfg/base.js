@@ -32,7 +32,6 @@ module.exports = {
     alias: {
       ACTION: `${defaultSettings.srcPath}/actions/`,
       COMPONENT: `${defaultSettings.srcPath}/components/`,
-      CONTAINER: `${defaultSettings.srcPath}/containers/`,
       REDUCER: `${defaultSettings.srcPath}/reducers/`,
       STORE: `${defaultSettings.srcPath}/store/`,
       STYLE: `${defaultSettings.srcPath}/styles/`,
