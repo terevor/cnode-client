@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -7,34 +6,40 @@ import Avatar from 'material-ui/Avatar';
 import SvgIconPerson from 'material-ui/svg-icons/social/person';
 import SvgIconFace from 'material-ui/svg-icons/action/face';
 import SvgIconExit from 'material-ui/svg-icons/action/exit-to-app';
-import * as profileAction from 'ACTION/profile.action';
+import sidebarAction from 'ACTION/sidebar.action';
 import { logout } from 'ACTION/login.action';
 import { go } from 'react-router-redux';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
-class UserProfile extends React.Component {
+@connect(
+    ({ login, sidebar }) => ({
+        sidebarShow: sidebar.show,
+        user: login.user
+    }),
+    (dispatch) => ({
+        showSidebar: () => {
+            dispatch(sidebarAction.showSidebar());
+        },
+        hideSidebar: () => {
+            dispatch(sidebarAction.hideSidebar());
+        },
+        doLogout: () => {
+            dispatch(logout());
+            dispatch(sidebarAction.hideSidebar());
+            dispatch(go(-1));
+            window.localStorage.removeItem('user');
+        }
+    })
+)
+
+export default class Sidebar extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    toggleProfile = () => {
-        if(this.props.showProfile) {
-            this.hideProfile();
-        } else {
-            this.props.dispatch(profileAction.showProfile());
-        }
-    };
-
-    hideProfile = () => this.props.dispatch(profileAction.hideProfile());
-
-    doLogout = () => {
-        this.props.dispatch(logout());
-        this.hideProfile();
-        this.props.dispatch(go(-1));
-    };
-
     render() {
-        const { showProfile, user } = this.props;
+        const { sidebarShow, user, showSidebar, hideSidebar, doLogout } = this.props;
         const style = {
             avatar: {
                 display: 'inline-flex',
@@ -51,26 +56,19 @@ class UserProfile extends React.Component {
         const avatar = !user.avatar_url ? (<Avatar icon={<SvgIconFace />} />) : (<Avatar src={user.avatar_url} />);
         return (
             <div>
-                <IconButton tooltip="用户信息" onTouchTap={this.toggleProfile}>
+                <IconButton tooltip="用户信息" onTouchTap={showSidebar}>
                     <SvgIconPerson />
                 </IconButton>
-                <Drawer open={showProfile} width={200} docked={false} onRequestChange={() => this.hideProfile()}>
+                <Drawer open={sidebarShow} width={200} docked={false} onRequestChange={hideSidebar}>
                     <MenuItem style={style.menu}>
                         <Link to='/' style={style.avatar}>
                             {avatar}
                         </Link>
                     </MenuItem>
                     <MenuItem innerDivStyle={style.center} primaryText={user.loginname}></MenuItem>
-                    <MenuItem leftIcon={<SvgIconExit/>} onTouchTap={this.doLogout} primaryText="退出登录"></MenuItem>
+                    <MenuItem leftIcon={<SvgIconExit/>} onTouchTap={doLogout} primaryText="退出登录"></MenuItem>
                 </Drawer>
             </div>
         );
     }
 }
-
-const mapStateToProps = (state) => ({
-    showProfile: state.profile.show,
-    user: state.login.user
-});
-
-export default connect(mapStateToProps)(UserProfile);

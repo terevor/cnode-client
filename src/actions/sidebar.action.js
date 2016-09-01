@@ -1,35 +1,35 @@
 // ================================
 // Action Type
 // ================================
-const SHOWPROGRESS = 'SHOWPROGRESS';
-const HIDEPROGRESS = 'HIDEPROGRESS';
+const SHOWSIDEBAR = 'SHOWSIDEBAR';
+const HIDESIDEBAR = 'HIDESIDEBAR';
 
 // ================================
 // Action Creator
 // ================================
-const showProgress = () => ({
-    type: SHOWPROGRESS
+const showSidebar = () => ({
+    type: SHOWSIDEBAR
 });
 
-const hideProgress = () => ({
-    type: HIDEPROGRESS
+const hideSidebar = () => ({
+    type: HIDESIDEBAR
 });
 
 /* default 导出所有 Action Creators */
 export default {
-    showProgress,
-    hideProgress
+    showSidebar,
+    hideSidebar
 }
 
 // ================================
 // Action handlers for Reducer
 // ================================
 export const ACTION_HANDLERS = {
-    [SHOWPROGRESS]: (state) => ({
+    [SHOWSIDEBAR]: (state) => ({
         ...state,
         show: true
     }),
-    [HIDEPROGRESS]: (state) =>( {
+    [HIDESIDEBAR]: (state) => ({
         ...state,
         show: false
     })

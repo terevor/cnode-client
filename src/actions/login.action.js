@@ -1,5 +1,5 @@
-import * as message from '../constants/message';
-import progress from './progress.action';
+import * as message from '../constants';
+import loading from './loading.action';
 import snackbar from './snackbar.action';
 import * as http from 'UTIL/http';
 
@@ -55,19 +55,29 @@ const validateSuccess = (data) => ({
  * 注销
  * @return {[type]} [description]
  */
-const logout = () => ({
+export const logout = () => ({
     type: LOGOUT
 })
 
+const checkLogin = () => {
+    return (dispatch) => {
+        const user = JSON.parse(window.localStorage.getItem('user'));
+        if(user && user.accesstoken) {
+            return dispatch(validateSuccess(user));
+        }
+        return null;
+    }
+}
+
 const validateAccessToken = (token) => {
     return (dispatch) => {
-        dispatch(progress.showProgress());
+        dispatch(loading.showLoading());
 
         return http.post('https://cnodejs.org/api/v1/accesstoken', {
             accesstoken: token
         })
         .then((response) => {
-            dispatch(progress.hideProgress());
+            dispatch(loading.hideLoading());
 
             if (response.status >= 400) {
                 dispatch(snackbar.showSnackBar(message.INFO_LOGINFAIL));
@@ -81,6 +91,8 @@ const validateAccessToken = (token) => {
                 dispatch(snackbar.showSnackBar(message.INFO_LOGINSUCCESS));
 
                 const user = { ...data, accesstoken: token };
+
+                window.localStorage.setItem('user', JSON.stringify(user));
                 
                 return dispatch(validateSuccess(user));
             } else {
@@ -97,6 +109,7 @@ export default {
     loginInputError,
     validateSuccess,
     logout,
+    checkLogin,
     validateAccessToken
 }
 

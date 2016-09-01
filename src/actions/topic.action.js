@@ -1,6 +1,6 @@
-import * as message from '../constants/message';
+import * as message from '../constants';
 import * as http from 'UTIL/http';
-import progress from './progress.action';
+import loading from './loading.action';
 import snackbar from './snackbar.action';
 import pagination from './pagination.action';
 
@@ -24,13 +24,13 @@ const fetchTopicSuccess = (data) => ({
 const fetchTopicList = (params = {}) => {
     
     return (dispatch) => {
-        dispatch(progress.showProgress());
+        dispatch(loading.showLoading());
 
         let p = { ...DEFAULT_PARAMS, ...params };
 
         return http.get(`https://cnodejs.org/api/v1/topics?mdrender=true&tab=${p.tab}&page=${p.page}`)
             .then((response) => {
-                dispatch(progress.hideProgress());
+                dispatch(loading.hideLoading());
 
                 if (response.status >= 400) {
                     dispatch(snackbar.showSnackBar(message.INFO_FETCHTOPICFAIL));

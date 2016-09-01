@@ -3,8 +3,8 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { connect } from 'react-redux';
 
 @connect(
-    ({ progress }) => ({
-        showProgress: progress.show
+    ({ loading }) => ({
+        showLoading: loading.show
     })
 )
 
@@ -43,10 +43,10 @@ export default class Loading extends React.Component {
     }
 
     render() {
-        const { showProgress } = this.props;console.log('Loading render');
+        const { showLoading } = this.props;console.log('Loading render');
         const styles = this.getStyles();
         return (
-            <div style={{ ...styles.loadingModal, display: showProgress ? 'block' : 'none' }}>
+            <div style={{ ...styles.loadingModal, display: showLoading ? 'block' : 'none' }}>
                 <div style={styles.loadingWrapper}>
                     <CircularProgress size={2} />
                 </div>

@@ -2,16 +2,16 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import login from './login.reducer';
 import snackbar from './snackbar.reducer';
-import progress from './progress.reducer';
-import profile from './profile.reducer';
+import loading from './loading.reducer';
+import sidebar from './sidebar.reducer';
 import topic from './topic.reducer';
 import pagination from './pagination.reducer';
 
 const rootReducer = combineReducers({
   login,
   snackbar,
-  progress,
-  profile,
+  loading,
+  sidebar,
   topic,
   pagination,
   routing

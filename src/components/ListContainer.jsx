@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
 
 @connect(
     ({ login, topic, pagination }) => ({
-        token: login.user.accesstoken,
+        //token: login.user.accesstoken,
         topics: topic.topics,
         currPage: pagination.currPage
     }),

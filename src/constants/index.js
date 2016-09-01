@@ -1,30 +1,7 @@
-
-export const OPENLOGIN = 'OPENLOGIN';
-export const CLOSELOGIN = 'CLOSELOGIN';
-export const LOGININPUTERROR = 'LOGININPUTERROR';
-export const LOGOUT = 'LOGOUT';//退出登录
-
-export const ACCESSSUCCESS = 'ACCESSSUCCESS';
-
-export const SHOWSNACKBAR = 'SHOWSNACKBAR';
-export const HIDESNACKBAR = 'HIDESNACKBAR';
-
-export const SHOWPROGRESS = 'SHOWPROGRESS';
-export const HIDEPROGRESS = 'HIDEPROGRESS';
-
-export const SHOWPROFILE = 'SHOWPROFILE';
-export const HIDEPROFILE = 'HIDEPROFILE';
-
-export const FETCHTOPICSUCCESS = 'FETCHTOPICSUCCESS';
-
-export const PAGECHANGE = 'PAGECHANGE';
-
-export const ADDTOPICSUCCESS = 'ADDTOPICSUCCESS';
-
-export const COLLECTSUCCESS = 'COLLECTSUCCESS';//收藏成功
-
-export const DECOLLECTSUCCESS = 'DECOLLECTSUCCESS';//取消收藏成功
-
-export const GETMESSAGECOUNTSUCCESS = 'GETMESSAGECOUNTSUCCESS';//获取未读数
-
-export const GETUSERMESSAGESUCCESS = 'GETUSERMESSAGESUCCESS';//获取用户消息
+export const INFO_LOGINSUCCESS = '登录成功';
+export const INFO_LOGINFAIL = '登录失败';
+export const INFO_FETCHTOPICSUCCESS = '刷新帖子列表成功';
+export const INFO_FETCHTOPICFAIL = '刷新帖子列表失败';
+export const INFO_ADDTOPICSUCCESS = '发帖成功';
+export const INFO_ADDREPLYSUCCESS = '回复成功';
+export const INFO_MARKALLSUCCESS = '收藏成功';
