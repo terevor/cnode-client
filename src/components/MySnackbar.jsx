@@ -11,16 +11,13 @@ import Snackbar from 'material-ui/Snackbar';
 )
 
 export default class MySnackbar extends React.Component {
-    static propTypes = {
-        
-    };
-
     constructor(props) {
         super(props);
     }
 
     render() {
-        const { showSnackbar, message, hideSnackBar } = this.props;console.log('MySnackbar render');
+        const { showSnackbar, message, hideSnackBar } = this.props;
+        console.log('MySnackbar render');
         return (
             <Snackbar
                 open={showSnackbar}
@@ -30,4 +27,8 @@ export default class MySnackbar extends React.Component {
             />
         );
     }
+
+    static propTypes = {
+        
+    };
 }

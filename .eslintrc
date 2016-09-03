@@ -17,6 +17,12 @@
     "node": true,
     "mocha": true
   },
+  "globals": {
+    "__DEV__": true,
+    "__PROD__": true,
+    "__COMPONENT_DEVTOOLS__": false,
+    "__WHY_DID_YOU_UPDATE__": false
+  },
   "rules": {
     "comma-dangle": 1,
     "quotes": [ 1, "single" ],
@@ -24,7 +30,7 @@
     "global-strict": 0,
     "no-extra-semi": 1,
     "no-underscore-dangle": 0,
-    "no-console": 1,
+    "no-console": 0,
     "no-unused-vars": 1,
     "no-trailing-spaces": [1, { "skipBlankLines": true }],
     "no-unreachable": 1,

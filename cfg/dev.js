@@ -21,6 +21,18 @@ let config = Object.assign({}, baseConfig, {
     new webpack.NoErrorsPlugin(),
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env': { // 这是给 React / Redux 打包用的
+        NODE_ENV: '"development"'
+      },
+      // ================================
+      // 配置开发全局常量
+      // ================================
+      __DEV__: true,
+      __PROD__: false,
+      __COMPONENT_DEVTOOLS__: false, // 是否使用组件形式的 Redux DevTools
+      __WHY_DID_YOU_UPDATE__: false // 是否检测不必要的组件重渲染
     })
   ],
   module: defaultSettings.getDefaultModules()

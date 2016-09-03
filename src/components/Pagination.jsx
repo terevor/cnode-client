@@ -23,6 +23,7 @@ export default class Pagination extends Component {
             }
         }
     }
+
     getPageMenus(currPage, totalPage) {
         let pageMenus = [], menuKey = 1;
 

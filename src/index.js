@@ -1,4 +1,4 @@
-import 'core-js/fn/object/assign';
+// import 'core-js/fn/object/assign';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -13,8 +13,16 @@ injectTapEventPlugin();
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
-/*const { whyDidYouUpdate } = require('why-did-you-update');
-whyDidYouUpdate(React);*/
+if (__DEV__ && __WHY_DID_YOU_UPDATE__) {
+  const { whyDidYouUpdate } = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
+if (__DEV__) {
+  console.info('[当前环境] 开发环境')
+}
+if (__PROD__) {
+  console.info('[当前环境] 生产环境')
+}
 
 render(
     <Provider store={store}>

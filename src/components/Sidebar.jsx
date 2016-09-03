@@ -40,6 +40,7 @@ export default class Sidebar extends React.Component {
 
     render() {
         const { sidebarShow, user, showSidebar, hideSidebar, doLogout } = this.props;
+        console.log('Sidebar render');
         const style = {
             avatar: {
                 display: 'inline-flex',

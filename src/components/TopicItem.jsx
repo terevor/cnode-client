@@ -3,7 +3,7 @@ import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import { cyan500 } from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import moment from 'moment';
-import momentLocale from 'moment/locale/zh-cn';
+require('moment/locale/zh-cn');
 
 export default class TopicItem extends Component {
     tabMap(tab) {
@@ -45,7 +45,7 @@ export default class TopicItem extends Component {
         let lastreply = moment(topic.last_reply_at).startOf('second').fromNow();
             lastreply = `最近回复于 ${lastreply} (点击查看详情)`;
 
-        let title = `(${topic.reply_count}/${topic.visit_count}) ${tab}` ;
+        let title = `(${topic.reply_count}/${topic.visit_count}) ${tab}`;
         
         let avatar = topic.author.avatar_url ? topic.author.avatar_url.replace(/^\/\//g,'http://') : '';
 
