@@ -23,7 +23,9 @@ export default {
     },
 
     topic: {
-        topics: []
+        topics: [],
+        topicDetail: null,
+        topicDetailCollect: false
     },
 
     sidebar: {

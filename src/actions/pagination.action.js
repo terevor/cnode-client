@@ -1,13 +1,13 @@
 // ================================
 // Action Type
 // ================================
-const PAGECHANGE = 'PAGECHANGE';
+const PAGE_CHANGE = 'PAGE_CHANGE';
 
 // ================================
 // Action Creator
 // ================================
 const changePage = (page) => ({
-    type: PAGECHANGE,
+    type: PAGE_CHANGE,
     payload: {
     	currPage: page
     }
@@ -22,7 +22,7 @@ export default {
 // Action handlers for Reducer
 // ================================
 export const ACTION_HANDLERS = {
-    [PAGECHANGE]: (state, { payload }) => ({
+    [PAGE_CHANGE]: (state, { payload }) => ({
         ...state,
         currPage: payload.currPage
     })

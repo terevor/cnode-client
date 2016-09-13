@@ -1,18 +1,18 @@
 // ================================
 // Action Type
 // ================================
-const SHOWLOADING = 'SHOWLOADING';
-const HIDELOADING = 'HIDELOADING';
+const SHOW_LOADING = 'SHOW_LOADING';
+const HIDE_LOADING = 'HIDE_LOADING';
 
 // ================================
 // Action Creator
 // ================================
 const showLoading = () => ({
-    type: SHOWLOADING
+    type: SHOW_LOADING
 });
 
 const hideLoading = () => ({
-    type: HIDELOADING
+    type: HIDE_LOADING
 });
 
 /* default 导出所有 Action Creators */
@@ -25,11 +25,11 @@ export default {
 // Action handlers for Reducer
 // ================================
 export const ACTION_HANDLERS = {
-    [SHOWLOADING]: (state) => ({
+    [SHOW_LOADING]: (state) => ({
         ...state,
         show: true
     }),
-    [HIDELOADING]: (state) =>( {
+    [HIDE_LOADING]: (state) =>( {
         ...state,
         show: false
     })

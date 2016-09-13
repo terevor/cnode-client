@@ -19,3 +19,8 @@ export function get(url) {
         headers: headers
     });
 }
+
+export default {
+    post,
+    get
+}

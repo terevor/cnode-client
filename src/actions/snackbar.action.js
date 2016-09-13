@@ -1,21 +1,21 @@
 // ================================
 // Action Type
 // ================================
-const SHOWSNACKBAR = 'SHOWSNACKBAR';
-const HIDESNACKBAR = 'HIDESNACKBAR';
+const SHOW_SNACKBAR = 'SHOW_SNACKBAR';
+const HIDE_SNACKBAR = 'HIDE_SNACKBAR';
 
 // ================================
 // Action Creator
 // ================================
 const showSnackBar = (message) => ({
-    type: SHOWSNACKBAR,
+    type: SHOW_SNACKBAR,
     payload: {
         message: message
     }
 });
 
 const hideSnackBar = () => ({
-    type: HIDESNACKBAR
+    type: HIDE_SNACKBAR
 });
 
 /* default 导出所有 Action Creators */
@@ -28,12 +28,12 @@ export default {
 // Action handlers for Reducer
 // ================================
 export const ACTION_HANDLERS = {
-    [SHOWSNACKBAR]: (state, { payload }) => ({
+    [SHOW_SNACKBAR]: (state, { payload }) => ({
         ...state,
         show: true,
         message: payload.message
     }),
-    [HIDESNACKBAR]: (state) =>( {
+    [HIDE_SNACKBAR]: (state) =>( {
         ...state,
         show: false,
         message: ''

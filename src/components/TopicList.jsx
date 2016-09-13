@@ -10,8 +10,12 @@ export default class TopicList extends Component {
     getStyles() {
         const styles = {
             wrapper: {
-                width: '1200px',
-                margin:'100px auto 0'
+                fontFamily: '"Microsoft YaHei","Roboto",sans-serif!important',
+                width: '90%',
+                maxWidth: '1400px',
+                minWidth: '1130px',
+                margin: '90px auto',
+                minHeight: '400px'
             }
             
         };

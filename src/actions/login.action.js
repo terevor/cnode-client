@@ -1,15 +1,15 @@
-import * as message from '../constants';
+import message from '../constants';
 import loading from './loading.action';
 import snackbar from './snackbar.action';
-import * as http from 'UTIL/http';
+import http from 'UTIL/http';
 
 // ================================
 // Action Type
 // ================================
-const OPENLOGIN = 'OPENLOGIN';
-const CLOSELOGIN = 'CLOSELOGIN';
-const LOGININPUTERROR = 'LOGININPUTERROR';
-const VALIDATESUCCESS = 'VALIDATESUCCESS';
+const OPEN_LOGIN = 'OPEN_LOGIN';
+const CLOSE_LOGIN = 'CLOSE_LOGIN';
+const LOGIN_INPUT_ERROR = 'LOGIN_INPUT_ERROR';
+const VALIDATE_SUCCESS = 'VALIDATE_SUCCESS';
 const LOGOUT = 'LOGOUT';
 
 // ================================
@@ -20,14 +20,14 @@ const LOGOUT = 'LOGOUT';
  * @return {[type]} [description]
  */
 const openLogin = () => ({
-    type: OPENLOGIN
+    type: OPEN_LOGIN
 })
 /**
  * 关闭登录框
  * @return {[type]} [description]
  */
 const closeLogin = () => ({
-    type: CLOSELOGIN
+    type: CLOSE_LOGIN
 })
 /**
  * 登录input输入异常提示
@@ -35,7 +35,7 @@ const closeLogin = () => ({
  * @return {[type]} [description]
  */
 const loginInputError = (errorText = '') => ({
-    type: LOGININPUTERROR,
+    type: LOGIN_INPUT_ERROR,
     payload: {
         errorText: errorText
     }
@@ -46,7 +46,7 @@ const loginInputError = (errorText = '') => ({
  * @return {[type]}      [description]
  */
 const validateSuccess = (data) => ({
-    type: VALIDATESUCCESS,
+    type: VALIDATE_SUCCESS,
     payload: {
         user: data
     }
@@ -80,7 +80,7 @@ const validateAccessToken = (token) => {
             dispatch(loading.hideLoading());
 
             if (response.status >= 400) {
-                dispatch(snackbar.showSnackBar(message.INFO_LOGINFAIL));
+                dispatch(snackbar.showSnackBar(message.INFO_LOGIN_FAIL));
                 return null;
             }
             return response.json();
@@ -88,7 +88,7 @@ const validateAccessToken = (token) => {
         .then((data) => {
             if (data) {
                 dispatch(closeLogin());
-                dispatch(snackbar.showSnackBar(message.INFO_LOGINSUCCESS));
+                dispatch(snackbar.showSnackBar(message.INFO_LOGIN_SUCCESS));
 
                 const user = { ...data, accesstoken: token };
 
@@ -117,20 +117,20 @@ export default {
 // Action handlers for Reducer
 // ================================
 export const ACTION_HANDLERS = {
-    [OPENLOGIN]: (state) => ({
+    [OPEN_LOGIN]: (state) => ({
         ...state,
         showLogin: true,
         errorText: null
     }),
-    [CLOSELOGIN]: (state) => ({
+    [CLOSE_LOGIN]: (state) => ({
         ...state,
         showLogin: false
     }),
-    [LOGININPUTERROR]: (state, { payload }) => ({
+    [LOGIN_INPUT_ERROR]: (state, { payload }) => ({
         ...state,
         errorText: payload.errorText
     }),
-    [VALIDATESUCCESS]: (state, { payload }) =>( {
+    [VALIDATE_SUCCESS]: (state, { payload }) =>( {
         ...state,
         user: payload.user,
         isLogedin: true

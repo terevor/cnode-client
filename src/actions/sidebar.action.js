@@ -1,18 +1,18 @@
 // ================================
 // Action Type
 // ================================
-const SHOWSIDEBAR = 'SHOWSIDEBAR';
-const HIDESIDEBAR = 'HIDESIDEBAR';
+const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
 
 // ================================
 // Action Creator
 // ================================
 const showSidebar = () => ({
-    type: SHOWSIDEBAR
+    type: SHOW_SIDEBAR
 });
 
 const hideSidebar = () => ({
-    type: HIDESIDEBAR
+    type: HIDE_SIDEBAR
 });
 
 /* default 导出所有 Action Creators */
@@ -25,11 +25,11 @@ export default {
 // Action handlers for Reducer
 // ================================
 export const ACTION_HANDLERS = {
-    [SHOWSIDEBAR]: (state) => ({
+    [SHOW_SIDEBAR]: (state) => ({
         ...state,
         show: true
     }),
-    [HIDESIDEBAR]: (state) => ({
+    [HIDE_SIDEBAR]: (state) => ({
         ...state,
         show: false
     })

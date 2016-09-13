@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
@@ -19,7 +20,11 @@ export default class Pagination extends Component {
             page: {
                 position: 'fixed',
                 right: '10px',
-                width: '80px'
+                width: '80px',
+                top: '150px'
+            },
+            paper: {
+                display: 'inline-block'
             }
         }
     }
@@ -67,12 +72,14 @@ export default class Pagination extends Component {
 
         return (
             <div style={styles.page}>
-                <Menu desktop={true}>
-                    <MenuItem primaryText="首页" onTouchTap={this.changePage.bind(this, 1)}/>
-                    <Divider />
-                    {menus}
-                    <MenuItem primaryText="末页" onTouchTap={this.changePage.bind(this, totalPage)} />
-                 </Menu>
+                <Paper style={styles.paper}>
+                    <Menu desktop={true}>
+                        <MenuItem primaryText="首页" onTouchTap={this.changePage.bind(this, 1)}/>
+                        <Divider/>
+                        {menus}
+                        <MenuItem primaryText="末页" onTouchTap={this.changePage.bind(this, totalPage)} />
+                    </Menu>
+                </Paper>
             </div>
         );
     }
